@@ -26,9 +26,6 @@ if __name__ == '__main__':
         state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
     #--------------------------------------------------------------------------------------------------------#  
         time = state.json()['data']['leftDays']
-        if isinstance(time, int):
-            print("failed", time)
-            continue
         time = time.split('.')[0]
         email = state.json()['data']['email']
         if 'message' in checkin.text:
@@ -41,5 +38,4 @@ if __name__ == '__main__':
      #--------------------------------------------------------------------------------------------------------#   
     if sckey != "":
          requests.get('http://www.pushplus.plus/send?token=' + sckey + '&title='+email+'签到成功'+'&content='+sendContent)
-
 
